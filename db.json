@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "name": "Harshal Ghate",
+      "email": "harshalghate3131@gmail.com",
+      "mobile": "7721843839",
+      "address": "Fursungi",
+      "services": "chi"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

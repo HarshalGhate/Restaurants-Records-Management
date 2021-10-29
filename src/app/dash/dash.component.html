@@ -1,0 +1,93 @@
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h2>Restaurent Record App</h2>
+        <div class="d-flex">
+            <button type="button" (click)="clickAddResto()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >Add Restaurent</button>
+        </div>
+    </div>
+
+</nav>
+<!--Jumbotron-->
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-2">
+        <h1 class="display-5 fw-bold">Restaurent Records Management</h1>
+        <p class="col-md-8 fs-4">You can save Records of Restaurent</p>
+        <a class="btn btn-primary btn-lg" target="_blank" type="button" href="#">Harshal</a>
+    </div>
+</div>
+<!-- Table-->
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th scope="col">Restaurent ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Address</th>
+            <th scope="col">Service</th>
+            <th scope="col">Action</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of allRestaurentData">
+            <td>{{data.id}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.email}}</td>
+            <td>{{data.mobile}}</td>
+            <td>{{data.address}}</td>
+            <td>{{data.services}}</td>
+            <td>                              <!--modal copy Add restaurent to edit-->
+                <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="onEditRestaurent(data)" >Edit</button>&nbsp;
+                <button class="btn btn-danger" (click)="deleteRestaurent(data)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formValue">
+                <div class="mb-3">
+                  <label  class="form-label">Name</label>
+                  <input type="text" formControlName="name" class="form-control"  placeholder="Restaurent Name Here" >
+                  
+                </div>
+                <div class="mb-3">
+                  <label  class="form-label">Email Id</label>
+                  <input type="text" formControlName="email" class="form-control" placeholder="Restaurent email Id" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                    <label  class="form-label">Mobile</label>
+                    <input type="text" formControlName="mobile" class="form-control" placeholder="Restaurent Mobile" id="exampleInputPassword1">
+                  </div>
+                  <div class="mb-3">
+                    <label  class="form-label">Address</label>
+                    <input type="text" formControlName="address" class="form-control" placeholder="Restaurent Address" id="exampleInputPassword1">
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Service</label>
+                    <input type="text" formControlName="services" class="form-control" placeholder="Restaurent Service like chai,coffe" id="exampleInputPassword1">
+                  </div>
+                
+                
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button *ngIf="showAdd" type="button" class="btn btn-primary" (click)="addRestaurent()">Add Details</button>
+          <button *ngIf="showUpdate" type="button" class="btn btn-primary" (click)="updateRestaurent()">Update Details</button>
+        </div>
+      </div>
+    </div>
+  </div>
